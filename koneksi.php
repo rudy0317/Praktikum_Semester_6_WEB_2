@@ -7,3 +7,7 @@ $conn = mysqli_connect(
     $env['DB_NAME'],
     $env['DB_PORT'],
 );
+
+if (!defined('BASE_URL')) {
+    define('BASE_URL', '/praktikum%20web%20semester%206/');
+}

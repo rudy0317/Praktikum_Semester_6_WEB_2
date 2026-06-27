@@ -22,7 +22,7 @@
                 <a href="https://phppasswordhash.com" class="dropdown-item">
                     <i class="fas fa-key mr-2"></i> Ubah Password
                 </a>
-                <a href="logout.php" class="dropdown-item" onClick="javascript: return confirm('Konfirmasi akan logout?');">
+                <a href="<?php echo BASE_URL; ?>admin/logout.php" class="dropdown-item" onClick="javascript: return confirm('Konfirmasi akan logout?');">
                     <i class="fas fa-sign-out-alt mr-2"></i> Logout
                 </a>
             </div>

@@ -1,13 +1,18 @@
 <?php
 session_start();
 if (!isset($_SESSION["login"]) || $_SESSION["peran"] !== "ADMIN") {
-    header("Location: ../index.php");
+    header("Location: ../../index.php");
     exit;
 }
 
 include '../../koneksi.php';
 
-$result = mysqli_query($conn, "SELECT K.*, (SELECT J.nama_jabatan FROM jabatan_karyawan JK INNER JOIN jabatan J ON JK.jabatan_id = J.id WHERE JK.karyawan_id = K.id ORDER BY JK.tanggal_mulai DESC LIMIT 1) jabatan_terkini FROM karyawan K ORDER BY K.id DESC");
+$query = "SELECT B.*, K.nama_lengkap AS nama_kepala, L.nama_lokasi 
+          FROM bagian B 
+          LEFT JOIN karyawan K ON B.karyawan_id = K.id 
+          LEFT JOIN lokasi L ON B.lokasi_id = L.id 
+          ORDER BY B.id DESC";
+$result = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +20,7 @@ $result = mysqli_query($conn, "SELECT K.*, (SELECT J.nama_jabatan FROM jabatan_k
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Data Karyawan | PRAKTIKUM FTI UNISKA</title>
+    <title>Data Bagian | PRAKTIKUM FTI UNISKA</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -35,12 +40,12 @@ $result = mysqli_query($conn, "SELECT K.*, (SELECT J.nama_jabatan FROM jabatan_k
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Data Karyawan</h1>
+                            <h1>Data Bagian</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="../index.php">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Karyawan</li>
+                                <li class="breadcrumb-item active">Bagian</li>
                             </ol>
                         </div>
                     </div>
@@ -53,7 +58,7 @@ $result = mysqli_query($conn, "SELECT K.*, (SELECT J.nama_jabatan FROM jabatan_k
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Daftar Karyawan</h3>
+                                    <h3 class="card-title">Daftar Bagian</h3>
                                     <div class="card-tools">
                                         <a href="tambah.php" class="btn btn-primary btn-sm">
                                             <i class="fas fa-plus"></i> Tambah
@@ -61,13 +66,13 @@ $result = mysqli_query($conn, "SELECT K.*, (SELECT J.nama_jabatan FROM jabatan_k
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <table id="tableKaryawan" class="table table-bordered table-striped">
+                                    <table id="tableBagian" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>NIK</th>
-                                                <th>Nama Lengkap</th>
-                                                <th>Jabatan Terkini</th>
+                                                <th>Nama Bagian</th>
+                                                <th>Kepala Bagian</th>
+                                                <th>Lokasi</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -75,20 +80,14 @@ $result = mysqli_query($conn, "SELECT K.*, (SELECT J.nama_jabatan FROM jabatan_k
                                             <?php $no = 1; while ($row = mysqli_fetch_assoc($result)) : ?>
                                                 <tr>
                                                     <td><?php echo $no++; ?></td>
-                                                    <td><?php echo $row["nik"]; ?></td>
-                                                    <td><?php echo $row["nama_lengkap"]; ?></td>
-                                                    <td><?php echo $row["jabatan_terkini"] ?? "-"; ?></td>
+                                                    <td><?php echo $row["nama_bagian"]; ?></td>
+                                                    <td><?php echo $row["nama_kepala"] ?? "-"; ?></td>
+                                                    <td><?php echo $row["nama_lokasi"] ?? "-"; ?></td>
                                                     <td>
-                                                        <a href="karyawan-jabatan.php?id=<?php echo $row['id']; ?>" class="btn btn-info btn-sm mr-1">
-                                                            <i class="fa fa-user-tag"></i> Jabatan
-                                                        </a>
-                                                        <a href="karyawan-bagian.php?id=<?php echo $row['id']; ?>" class="btn btn-secondary btn-sm mr-1">
-                                                            <i class="fa fa-sitemap"></i> Bagian
-                                                        </a>
                                                         <a href="ubah.php?id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
-                                                        <a href="hapus.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus karyawan ini?')">
+                                                        <a href="hapus.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus bagian ini?')">
                                                             <i class="fas fa-trash"></i>
                                                         </a>
                                                     </td>
@@ -125,12 +124,12 @@ $result = mysqli_query($conn, "SELECT K.*, (SELECT J.nama_jabatan FROM jabatan_k
     <script src="../../dist/js/demo.js"></script>
     <script>
         $(function() {
-            $("#tableKaryawan").DataTable({
+            $("#tableBagian").DataTable({
                 "responsive": true,
                 "lengthChange": true,
                 "autoWidth": false,
                 "buttons": ["copy", "csv", "excel", "pdf", "print"]
-            }).buttons().container().appendTo('#tableKaryawan_wrapper .col-md-6:eq(0)');
+            }).buttons().container().appendTo('#tableBagian_wrapper .col-md-6:eq(0)');
         });
     </script>
 </body>

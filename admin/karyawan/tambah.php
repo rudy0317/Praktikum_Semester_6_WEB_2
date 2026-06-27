@@ -13,12 +13,35 @@ if (isset($_POST["simpan"])) {
     $handphone = $_POST["handphone"];
     $email = $_POST["email"];
     $tanggal_masuk = $_POST["tanggal_masuk"];
+    $jabatan_id = $_POST["jabatan_id"];
+    $bagian_id = $_POST["bagian_id"];
 
+    // 1. Insert karyawan
     mysqli_query($conn, "INSERT INTO karyawan (nik, nama_lengkap, handphone, email, tanggal_masuk)
         VALUES ('$nik', '$nama_lengkap', '$handphone', '$email', '$tanggal_masuk')");
+    
+    // Get newly inserted ID
+    $karyawan_id = mysqli_insert_id($conn);
+
+    // 2. Insert initial jabatan if selected
+    if (!empty($jabatan_id)) {
+        mysqli_query($conn, "INSERT INTO jabatan_karyawan (karyawan_id, jabatan_id, tanggal_mulai) 
+            VALUES ($karyawan_id, $jabatan_id, '$tanggal_masuk')");
+    }
+
+    // 3. Insert initial bagian if selected
+    if (!empty($bagian_id)) {
+        mysqli_query($conn, "INSERT INTO bagian_karyawan (karyawan_id, bagian_id, tanggal_mulai) 
+            VALUES ($karyawan_id, $bagian_id, '$tanggal_masuk')");
+    }
+
     echo "<script>location='index.php'</script>";
     exit;
 }
+
+// Fetch dropdown options
+$jabatans = mysqli_query($conn, "SELECT * FROM jabatan ORDER BY nama_jabatan ASC");
+$bagians = mysqli_query($conn, "SELECT * FROM bagian ORDER BY nama_bagian ASC");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,6 +108,24 @@ if (isset($_POST["simpan"])) {
                                         <div class="form-group">
                                             <label>Tanggal Masuk</label>
                                             <input type="date" name="tanggal_masuk" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Jabatan Awal</label>
+                                            <select name="jabatan_id" class="form-control" required>
+                                                <option value="">-- Pilih Jabatan --</option>
+                                                <?php while ($j = mysqli_fetch_assoc($jabatans)) : ?>
+                                                    <option value="<?php echo $j['id']; ?>"><?php echo $j['nama_jabatan']; ?></option>
+                                                <?php endwhile; ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Bagian Awal</label>
+                                            <select name="bagian_id" class="form-control" required>
+                                                <option value="">-- Pilih Bagian --</option>
+                                                <?php while ($b = mysqli_fetch_assoc($bagians)) : ?>
+                                                    <option value="<?php echo $b['id']; ?>"><?php echo $b['nama_bagian']; ?></option>
+                                                <?php endwhile; ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="card-footer">
