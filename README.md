@@ -10,7 +10,7 @@ A simple **PHP CRUD** admin interface built on **AdminLTE 3** (Bootstrap 4) 
 
 ## Rekap Gaji PDF
 
-[Rekap Gaji PDF](assets/Rekap_Gaji.pdf)
+[Rekap Gaji PDF](assets/Rekap Gaji _ PRAKTIKUM FTI UNISKA.pdf)
 
 ---
 
