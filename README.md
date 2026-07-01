@@ -1,4 +1,662 @@
-# [AdminLTE - Bootstrap 4 Admin Dashboard](https://adminlte.io)
+# Praktikum Semester 6 – Sistem Informasi Kepegawaian (FTI UNISKA)
+
+A simple **PHP CRUD** admin interface built on **AdminLTE 3** (Bootstrap 4) for managing employee data. This project is part of the Praktikum course for **Sistem Informasi Kepegawaian** at **FTI UNISKA**.
+
+---  
+
+## Screenshots  
+
+| Overview | Employees | Salary Report |
+|----------|-----------|--------------|
+| ![SS1](SS1.png) | ![SS2](SS2.png) | ![SS3](SS3.png) |
+| ![SS4](SS4.png) |  |  |
+
+*Add additional screenshots (`SS5.png`, `SS6.png`, …) following the same pattern.*
+
+---  
+
+## PDF Report  
+
+The **Rekap Gaji** report can be downloaded from the `assets` folder:
+
+[Rekap Gaji _ PRAKTIKUM FTI UNISKA (PDF)](assets/Rekap%20Gaji%20_%20PRAKTIKUM%20FTI%20UNISKA.pdf)
+
+---  
+
+## Project Structure  
+
+```
+├─ admin/                # AdminLTE‑based backend pages
+│   ├─ laporan/          # Report pages (rekap‑gaji, …)
+│   └─ …                 # Other admin panels
+├─ assets/               # Static assets (PDFs, images, etc.)
+│   └─ Rekap Gaji _ PRAKTIKUM FTI UNISKA.pdf
+├─ index.php             # Login entry point
+├─ koneksi.php           # DB connection (mysqli)
+├─ .env                  # DB credentials (ignored by git)
+└─ README.md             # THIS FILE
+```
+
+---  
+
+## Quick Start  
+
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/<your‑username>/<repo‑name>.git
+   cd <repo‑name>
+   ```
+
+2. **Create the database** (see `koneksi.php` for the expected schema)  
+   ```sql
+   CREATE DATABASE db_uniska_praktikum_semester_6;
+   ```
+
+3. **Install dependencies** (AdminLTE assets are already included)  
+   ```bash
+   # If you need to rebuild AdminLTE assets
+   npm install
+   npm run production
+   ```
+
+4. **Configure the environment** – copy `.env.example` → `.env` and fill in DB credentials.
+
+5. **Run with a local PHP server**  
+   ```bash
+   php -S localhost:90
+   ```
+   Open `http://localhost:90/` in your browser.
+
+---  
+
+## Usage  
+
+- **Login** – admin users (`ADMIN`) or normal users (`USER`) are defined in `koneksi.php`.  
+- **Dashboard** – navigate the sidebar to manage *Pegawai*, *Jabatan*, and generate the **Rekap Gaji** PDF.  
+- **Print / Export** – the “Print” button now uses a custom header/footer (center‑aligned) and the PDF title matches the report name.
+
+---  
+
+## Security & Best Practices  
+
+- All DB queries have been **converted to prepared statements** (see `admin/laporan/rekap‑gaji.php`).  
+- Passwords are stored with `password_hash()` and verified with `password_verify()`.  
+- Sessions are regenerated on login to prevent fixation.  
+- **Never** commit the real `.env` file – it’s already in `.gitignore`.
+
+---  
+
+## License  
+
+This educational project is released under the **MIT License**. Feel free to fork, modify, and use it for your own learning.
+
+---  
+
+*— Your Name / NIM – FTI UNISKA*
+
+A simple **PHP CRUD** admin interface built on **AdminLTE 3** (Bootstrap 4) for managing employee data. This project is part of the Praktikum course for **Sistem Informasi Kepegawaian** at **FTI UNISKA**.
+
+---  
+
+## Screenshots  
+
+| Overview | Employees | Salary Report |
+|----------|-----------|--------------|
+| ![SS1](SS1.png) | ![SS2](SS2.png) | ![SS3](SS3.png) |
+| ![SS4](SS4.png) |  |  |
+
+*Add additional screenshots (`SS5.png`, `SS6.png`, …) following the same pattern.*
+
+---  
+
+## PDF Report  
+
+The **Rekap Gaji** report can be downloaded from the `assets` folder:
+
+[Rekap Gaji _ PRAKTIKUM FTI UNISKA (PDF)](assets/Rekap%20Gaji%20_%20PRAKTIKUM%20FTI%20UNISKA.pdf)
+
+---  
+
+## Project Structure  
+
+```
+├─ admin/                # AdminLTE‑based backend pages
+│   ├─ laporan/          # Report pages (rekap‑gaji, …)
+│   └─ …                 # Other admin panels
+├─ assets/               # Static assets (PDFs, images, etc.)
+│   └─ Rekap Gaji _ PRAKTIKUM FTI UNISKA.pdf
+├─ index.php             # Login entry point
+├─ koneksi.php           # DB connection (mysqli)
+├─ .env                  # DB credentials (ignored by git)
+└─ README.md             # THIS FILE
+```
+
+---  
+
+## Quick Start  
+
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/<your‑username>/<repo‑name>.git
+   cd <repo‑name>
+   ```
+
+2. **Create the database** (see `koneksi.php` for the expected schema)  
+   ```sql
+   CREATE DATABASE db_uniska_praktikum_semester_6;
+   ```
+
+3. **Install dependencies** (AdminLTE assets are already included)  
+   ```bash
+   # If you need to rebuild AdminLTE assets
+   npm install
+   npm run production
+   ```
+
+4. **Configure the environment** – copy `.env.example` → `.env` and fill in DB credentials.
+
+5. **Run with a local PHP server**  
+   ```bash
+   php -S localhost:90
+   ```
+   Open `http://localhost:90/` in your browser.
+
+---  
+
+## Usage  
+
+- **Login** – admin users (`ADMIN`) or normal users (`USER`) are defined in `koneksi.php`.  
+- **Dashboard** – navigate the sidebar to manage *Pegawai*, *Jabatan*, and generate the **Rekap Gaji** PDF.  
+- **Print / Export** – the “Print” button now uses a custom header/footer (center‑aligned) and the PDF title matches the report name.
+
+---  
+
+## Security & Best Practices  
+
+- All DB queries have been **converted to prepared statements** (see `admin/laporan/rekap‑gaji.php`).  
+- Passwords are stored with `password_hash()` and verified with `password_verify()`.  
+- Sessions are regenerated on login to prevent fixation.  
+- **Never** commit the real `.env` file – it’s already in `.gitignore`.
+
+---  
+
+## License  
+
+This educational project is released under the **MIT License**. Feel free to fork, modify, and use it for your own learning.
+
+---  
+
+*— Your Name / NIM – FTI UNISKA*
+
+A simple **PHP CRUD** admin interface built on **AdminLTE 3** (Bootstrap 4) for managing employee data. This project is part of the Praktikum course for **Sistem Informasi Kepegawaian** at **FTI UNISKA**.
+
+---  
+
+## Screenshots  
+
+| Overview | Employees | Salary Report |
+|----------|-----------|--------------|
+| ![SS1](SS1.png) | ![SS2](SS2.png) | ![SS3](SS3.png) |
+| ![SS4](SS4.png) |  |  |
+
+*Add additional screenshots (`SS5.png`, `SS6.png`, …) following the same pattern.*
+
+---  
+
+## PDF Report  
+
+The **Rekap Gaji** report can be downloaded from the `assets` folder:
+
+[Rekap Gaji _ PRAKTIKUM FTI UNISKA (PDF)](assets/Rekap%20Gaji%20_%20PRAKTIKUM%20FTI%20UNISKA.pdf)
+
+---  
+
+## Project Structure  
+
+```
+├─ admin/                # AdminLTE‑based backend pages
+│   ├─ laporan/          # Report pages (rekap‑gaji, …)
+│   └─ …                 # Other admin panels
+├─ assets/               # Static assets (PDFs, images, etc.)
+│   └─ Rekap Gaji _ PRAKTIKUM FTI UNISKA.pdf
+├─ index.php             # Login entry point
+├─ koneksi.php           # DB connection (mysqli)
+├─ .env                  # DB credentials (ignored by git)
+└─ README.md             # THIS FILE
+```
+
+---  
+
+## Quick Start  
+
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/<your‑username>/<repo‑name>.git
+   cd <repo‑name>
+   ```
+
+2. **Create the database** (see `koneksi.php` for the expected schema)  
+   ```sql
+   CREATE DATABASE db_uniska_praktikum_semester_6;
+   ```
+
+3. **Install dependencies** (AdminLTE assets are already included)  
+   ```bash
+   # If you need to rebuild AdminLTE assets
+   npm install
+   npm run production
+   ```
+
+4. **Configure the environment** – copy `.env.example` → `.env` and fill in DB credentials.
+
+5. **Run with a local PHP server**  
+   ```bash
+   php -S localhost:90
+   ```
+   Open `http://localhost:90/` in your browser.
+
+---  
+
+## Usage  
+
+- **Login** – admin users (`ADMIN`) or normal users (`USER`) are defined in `koneksi.php`.  
+- **Dashboard** – navigate the sidebar to manage *Pegawai*, *Jabatan*, and generate the **Rekap Gaji** PDF.  
+- **Print / Export** – the “Print” button now uses a custom header/footer (center‑aligned) and the PDF title matches the report name.
+
+---  
+
+## Security & Best Practices  
+
+- All DB queries have been **converted to prepared statements** (see `admin/laporan/rekap‑gaji.php`).  
+- Passwords are stored with `password_hash()` and verified with `password_verify()`.  
+- Sessions are regenerated on login to prevent fixation.  
+- **Never** commit the real `.env` file – it’s already in `.gitignore`.
+
+---  
+
+## License  
+
+This educational project is released under the **MIT License**. Feel free to fork, modify, and use it for your own learning.
+
+---  
+
+*— Your Name / NIM – FTI UNISKA*
+
+A simple **PHP CRUD** admin interface built on **AdminLTE 3** (Bootstrap 4) for managing employee data. This project is part of the Praktikum course for **Sistem Informasi Kepegawaian** at **FTI UNISKA**.
+
+---  
+
+## Screenshots  
+
+| Overview | Employees | Salary Report |
+|----------|-----------|--------------|
+| ![SS1](SS1.png) | ![SS2](SS2.png) | ![SS3](SS3.png) |
+| ![SS4](SS4.png) |  |  |
+
+*Add additional screenshots (`SS5.png`, `SS6.png`, …) following the same pattern.*
+
+---  
+
+## PDF Report  
+
+The **Rekap Gaji** report can be downloaded from the `assets` folder:
+
+[Rekap Gaji _ PRAKTIKUM FTI UNISKA (PDF)](assets/Rekap%20Gaji%20_%20PRAKTIKUM%20FTI%20UNISKA.pdf)
+
+---  
+
+## Project Structure  
+
+```
+├─ admin/                # AdminLTE‑based backend pages
+│   ├─ laporan/          # Report pages (rekap‑gaji, …)
+│   └─ …                 # Other admin panels
+├─ assets/               # Static assets (PDFs, images, etc.)
+│   └─ Rekap Gaji _ PRAKTIKUM FTI UNISKA.pdf
+├─ index.php             # Login entry point
+├─ koneksi.php           # DB connection (mysqli)
+├─ .env                  # DB credentials (ignored by git)
+└─ README.md             # THIS FILE
+```
+
+---  
+
+## Quick Start  
+
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/<your‑username>/<repo‑name>.git
+   cd <repo‑name>
+   ```
+
+2. **Create the database** (see `koneksi.php` for the expected schema)  
+   ```sql
+   CREATE DATABASE db_uniska_praktikum_semester_6;
+   ```
+
+3. **Install dependencies** (AdminLTE assets are already included)  
+   ```bash
+   # If you need to rebuild AdminLTE assets
+   npm install
+   npm run production
+   ```
+
+4. **Configure the environment** – copy `.env.example` → `.env` and fill in DB credentials.
+
+5. **Run with a local PHP server**  
+   ```bash
+   php -S localhost:90
+   ```
+   Open `http://localhost:90/` in your browser.
+
+---  
+
+## Usage  
+
+- **Login** – admin users (`ADMIN`) or normal users (`USER`) are defined in `koneksi.php`.  
+- **Dashboard** – navigate the sidebar to manage *Pegawai*, *Jabatan*, and generate the **Rekap Gaji** PDF.  
+- **Print / Export** – the “Print” button now uses a custom header/footer (center‑aligned) and the PDF title matches the report name.
+
+---  
+
+## Security & Best Practices  
+
+- All DB queries have been **converted to prepared statements** (see `admin/laporan/rekap‑gaji.php`).  
+- Passwords are stored with `password_hash()` and verified with `password_verify()`.  
+- Sessions are regenerated on login to prevent fixation.  
+- **Never** commit the real `.env` file – it’s already in `.gitignore`.
+
+---  
+
+## License  
+
+This educational project is released under the **MIT License**. Feel free to fork, modify, and use it for your own learning.
+
+---  
+
+*— Your Name / NIM – FTI UNISKA*
+
+A simple **PHP CRUD** admin interface built on **AdminLTE 3** (Bootstrap 4) for managing employee data. This project is part of the Praktikum course for **Sistem Informasi Kepegawaian** at **FTI UNISKA**.
+
+---  
+
+## Screenshots  
+
+| Overview | Employees | Salary Report |
+|----------|-----------|--------------|
+| ![SS1](SS1.png) | ![SS2](SS2.png) | ![SS3](SS3.png) |
+| ![SS4](SS4.png) |  |  |
+
+*Add additional screenshots (`SS5.png`, `SS6.png`, …) following the same pattern.*
+
+---  
+
+## PDF Report  
+
+The **Rekap Gaji** report can be downloaded from the `assets` folder:
+
+[Rekap Gaji _ PRAKTIKUM FTI UNISKA (PDF)](assets/Rekap%20Gaji%20_%20PRAKTIKUM%20FTI%20UNISKA.pdf)
+
+---  
+
+## Project Structure  
+
+```
+├─ admin/                # AdminLTE‑based backend pages
+│   ├─ laporan/          # Report pages (rekap‑gaji, …)
+│   └─ …                 # Other admin panels
+├─ assets/               # Static assets (PDFs, images, etc.)
+│   └─ Rekap Gaji _ PRAKTIKUM FTI UNISKA.pdf
+├─ index.php             # Login entry point
+├─ koneksi.php           # DB connection (mysqli)
+├─ .env                  # DB credentials (ignored by git)
+└─ README.md             # THIS FILE
+```
+
+---  
+
+## Quick Start  
+
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/<your‑username>/<repo‑name>.git
+   cd <repo‑name>
+   ```
+
+2. **Create the database** (see `koneksi.php` for the expected schema)  
+   ```sql
+   CREATE DATABASE db_uniska_praktikum_semester_6;
+   ```
+
+3. **Install dependencies** (AdminLTE assets are already included)  
+   ```bash
+   # If you need to rebuild AdminLTE assets
+   npm install
+   npm run production
+   ```
+
+4. **Configure the environment** – copy `.env.example` → `.env` and fill in DB credentials.
+
+5. **Run with a local PHP server**  
+   ```bash
+   php -S localhost:90
+   ```
+   Open `http://localhost:90/` in your browser.
+
+---  
+
+## Usage  
+
+- **Login** – admin users (`ADMIN`) or normal users (`USER`) are defined in `koneksi.php`.  
+- **Dashboard** – navigate the sidebar to manage *Pegawai*, *Jabatan*, and generate the **Rekap Gaji** PDF.  
+- **Print / Export** – the “Print” button now uses a custom header/footer (center‑aligned) and the PDF title matches the report name.
+
+---  
+
+## Security & Best Practices  
+
+- All DB queries have been **converted to prepared statements** (see `admin/laporan/rekap‑gaji.php`).  
+- Passwords are stored with `password_hash()` and verified with `password_verify()`.  
+- Sessions are regenerated on login to prevent fixation.  
+- **Never** commit the real `.env` file – it’s already in `.gitignore`.
+
+---  
+
+## License  
+
+This educational project is released under the **MIT License**. Feel free to fork, modify, and use it for your own learning.
+
+---  
+
+*— Your Name / NIM – FTI UNISKA*
+
+A simple **PHP CRUD** admin interface built on **AdminLTE 3** (Bootstrap 4) for managing employee data. This project is part of the Praktikum course for **Sistem Informasi Kepegawaian** at **FTI UNISKA**.
+
+---  
+
+## Screenshots  
+
+| Overview | Employees | Salary Report |
+|----------|-----------|--------------|
+| ![SS1](SS1.png) | ![SS2](SS2.png) | ![SS3](SS3.png) |
+| ![SS4](SS4.png) |  |  |
+
+*Add additional screenshots (`SS5.png`, `SS6.png`, …) following the same pattern.*
+
+---  
+
+## PDF Report  
+
+The **Rekap Gaji** report can be downloaded from the `assets` folder:
+
+[Rekap Gaji _ PRAKTIKUM FTI UNISKA (PDF)](assets/Rekap%20Gaji%20_%20PRAKTIKUM%20FTI%20UNISKA.pdf)
+
+---  
+
+## Project Structure  
+
+```
+├─ admin/                # AdminLTE‑based backend pages
+│   ├─ laporan/          # Report pages (rekap‑gaji, …)
+│   └─ …                 # Other admin panels
+├─ assets/               # Static assets (PDFs, images, etc.)
+│   └─ Rekap Gaji _ PRAKTIKUM FTI UNISKA.pdf
+├─ index.php             # Login entry point
+├─ koneksi.php           # DB connection (mysqli)
+├─ .env                  # DB credentials (ignored by git)
+└─ README.md             # THIS FILE
+```
+
+---  
+
+## Quick Start  
+
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/<your‑username>/<repo‑name>.git
+   cd <repo‑name>
+   ```
+
+2. **Create the database** (see `koneksi.php` for the expected schema)  
+   ```sql
+   CREATE DATABASE db_uniska_praktikum_semester_6;
+   ```
+
+3. **Install dependencies** (AdminLTE assets are already included)  
+   ```bash
+   # If you need to rebuild AdminLTE assets
+   npm install
+   npm run production
+   ```
+
+4. **Configure the environment** – copy `.env.example` → `.env` and fill in DB credentials.
+
+5. **Run with a local PHP server**  
+   ```bash
+   php -S localhost:90
+   ```
+   Open `http://localhost:90/` in your browser.
+
+---  
+
+## Usage  
+
+- **Login** – admin users (`ADMIN`) or normal users (`USER`) are defined in `koneksi.php`.  
+- **Dashboard** – navigate the sidebar to manage *Pegawai*, *Jabatan*, and generate the **Rekap Gaji** PDF.  
+- **Print / Export** – the “Print” button now uses a custom header/footer (center‑aligned) and the PDF title matches the report name.
+
+---  
+
+## Security & Best Practices  
+
+- All DB queries have been **converted to prepared statements** (see `admin/laporan/rekap‑gaji.php`).  
+- Passwords are stored with `password_hash()` and verified with `password_verify()`.  
+- Sessions are regenerated on login to prevent fixation.  
+- **Never** commit the real `.env` file – it’s already in `.gitignore`.
+
+---  
+
+## License  
+
+This educational project is released under the **MIT License**. Feel free to fork, modify, and use it for your own learning.
+
+---  
+
+*— Your Name / NIM – FTI UNISKA*
+
+A simple **PHP CRUD** admin interface built on **AdminLTE 3** (Bootstrap 4) for managing employee data. This project is part of the Praktikum course for **Sistem Informasi Kepegawaian** at **FTI UNISKA**.
+
+---  
+
+## Screenshots  
+
+| Overview | Employees | Salary Report |
+|----------|-----------|--------------|
+| ![SS1](SS1.png) | ![SS2](SS2.png) | ![SS3](SS3.png) |
+| ![SS4](SS4.png) |  |  |
+
+*Add additional screenshots (`SS5.png`, `SS6.png`, …) following the same pattern.*
+
+---  
+
+## PDF Report  
+
+The **Rekap Gaji** report can be downloaded from the `assets` folder:
+
+[Rekap Gaji _ PRAKTIKUM FTI UNISKA (PDF)](assets/Rekap%20Gaji%20_%20PRAKTIKUM%20FTI%20UNISKA.pdf)
+
+---  
+
+## Project Structure  
+
+```
+├─ admin/                # AdminLTE‑based backend pages
+│   ├─ laporan/          # Report pages (rekap‑gaji, …)
+│   └─ …                 # Other admin panels
+├─ assets/               # Static assets (PDFs, images, etc.)
+│   └─ Rekap Gaji _ PRAKTIKUM FTI UNISKA.pdf
+├─ index.php             # Login entry point
+├─ koneksi.php           # DB connection (mysqli)
+├─ .env                  # DB credentials (ignored by git)
+└─ README.md             # THIS FILE
+```
+
+---  
+
+## Quick Start  
+
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/<your‑username>/<repo‑name>.git
+   cd <repo‑name>
+   ```
+
+2. **Create the database** (see `koneksi.php` for the expected schema)  
+   ```sql
+   CREATE DATABASE db_uniska_praktikum_semester_6;
+   ```
+
+3. **Install dependencies** (AdminLTE assets are already included)  
+   ```bash
+   # If you need to rebuild AdminLTE assets
+   npm install
+   npm run production
+   ```
+
+4. **Configure the environment** – copy `.env.example` → `.env` and fill in DB credentials.
+
+5. **Run with a local PHP server**  
+   ```bash
+   php -S localhost:90
+   ```
+   Open `http://localhost:90/` in your browser.
+
+---  
+
+## Usage  
+
+- **Login** – admin users (`ADMIN`) or normal users (`USER`) are defined in `koneksi.php`.  
+- **Dashboard** – navigate the sidebar to manage *Pegawai*, *Jabatan*, and generate the **Rekap Gaji** PDF.  
+- **Print / Export** – the “Print” button now uses a custom header/footer (center‑aligned) and the PDF title matches the report name.
+
+---  
+
+## Security & Best Practices  
+
+- All DB queries have been **converted to prepared statements** (see `admin/laporan/rekap‑gaji.php`).  
+- Passwords are stored with `password_hash()` and verified with `password_verify()`.  
+- Sessions are regenerated on login to prevent fixation.  
+- **Never** commit the real `.env` file – it’s already in `.gitignore`.
+
+---  
+
+## License  
+
+This educational project is released under the **MIT License**. Feel free to fork, modify, and use it for your own learning.
+
+---  
+
+*— Your Name / NIM – FTI UNISKA*
 
 [![npm version](https://img.shields.io/npm/v/admin-lte/latest.svg)](https://www.npmjs.com/package/admin-lte)
 [![Packagist](https://img.shields.io/packagist/v/almasaeed2010/adminlte.svg)](https://packagist.org/packages/almasaeed2010/adminlte)
