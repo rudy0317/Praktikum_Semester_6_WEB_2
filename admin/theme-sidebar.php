@@ -95,31 +95,31 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?php echo BASE_URL; ?>admin/rekap-gaji.php" class="nav-link">
+                                    <a href="<?php echo BASE_URL; ?>admin/laporan/rekap-gaji.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Gaji Keseluruhan </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo BASE_URL; ?>admin/rekap-karyawan.php" class="nav-link">
+                                    <a href="<?php echo BASE_URL; ?>admin/laporan/rekap-gaji-karyawan.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Gaji Per Karyawan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo BASE_URL; ?>admin/rekap-jabatan.php" class="nav-link">
+                                    <a href="<?php echo BASE_URL; ?>admin/laporan/slip-gaji.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Slip Gaji Per Karyawan</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo BASE_URL; ?>admin/rekap-bagian.php" class="nav-link">
+                                    <a href="<?php echo BASE_URL; ?>admin/laporan/rekap-bagian.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Rekap Bagian</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo BASE_URL; ?>admin/rekap-jabatan.php" class="nav-link">
+                                    <a href="<?php echo BASE_URL; ?>admin/laporan/rekap-karyawan.php" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Rekap Karyawan</p>
                                     </a>

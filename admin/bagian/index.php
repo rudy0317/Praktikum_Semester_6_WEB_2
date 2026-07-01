@@ -7,10 +7,10 @@ if (!isset($_SESSION["login"]) || $_SESSION["peran"] !== "ADMIN") {
 
 include '../../koneksi.php';
 
-$query = "SELECT B.*, K.nama_lengkap AS nama_kepala, L.nama_lokasi 
-          FROM bagian B 
-          LEFT JOIN karyawan K ON B.karyawan_id = K.id 
-          LEFT JOIN lokasi L ON B.lokasi_id = L.id 
+$query = "SELECT B.*, K.nama_lengkap AS nama_kepala, L.nama_lokasi
+          FROM bagian B
+          LEFT JOIN karyawan K ON B.karyawan_id = K.id
+          LEFT JOIN lokasi L ON B.lokasi_id = L.id
           ORDER BY B.id DESC";
 $result = mysqli_query($conn, $query);
 ?>

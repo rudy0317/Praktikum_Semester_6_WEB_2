@@ -91,7 +91,7 @@ $total_gaji_bulan_ini = $r_gaji['total_gaji'] ?? 0;
                                 <div class="icon">
                                     <i class="fas fa-money-bill-wave"></i>
                                 </div>
-                                <a href="rekap-gaji.php?bulan=<?php echo $bulan_ini; ?>&tahun=<?php echo $tahun_ini; ?>" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="laporan/rekap-gaji.php?bulan=<?php echo $bulan_ini; ?>&tahun=<?php echo $tahun_ini; ?>" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         

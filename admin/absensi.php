@@ -125,7 +125,28 @@ $result = mysqli_query($conn, $query);
                 "responsive": true,
                 "lengthChange": true,
                 "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print"]
+                "buttons": ["copy", "csv", "excel", "pdf", {
+                    extend: 'print',
+                    customize: function ( win ) {
+                        $(win.document.body).find('h1').remove();
+                        $(win.document.body)
+                            .css( 'font-size', '10pt' )
+                            .prepend(
+                                '<div style="text-align:center; margin-bottom: 20px; position: relative;">' +
+                                '<img src="../assets/Uniska.png" style="width:100px; position:absolute; left:0; top:0;" />' +
+                                '<h3>UNIVERSITAS ISLAM KALIMANTAN (UNISKA)</h3>' +
+                                '<h4>MUHAMMAD ARSYAD AL BANJARI</h4>' +
+                                '<h5>FAKULTAS TEKNOLOGI INFORMASI</h5>' +
+                                '<hr style="border-top: 3px solid black; margin-top: 20px; margin-bottom: 20px;">' +
+                                '</div>' +
+                                '<h4 style="text-align: center; font-weight: bold; text-transform: uppercase; margin-top: 10px; margin-bottom: 20px;">Laporan Data Absensi Karyawan</h4>'
+                            );
+                        
+                        $(win.document.body).find( 'table' )
+                            .addClass( 'compact' )
+                            .css( 'font-size', 'inherit' );
+                    }
+                }]
             }).buttons().container().appendTo('#tableAbsensi_wrapper .col-md-6:eq(0)');
         });
     </script>
