@@ -8,8 +8,8 @@ A simple **PHP CRUD** admin interface built on **AdminLTE 3** (Bootstrap 4) 
 
 | Overview | Employees | Salary Report |
 |----------|-----------|--------------|
-| ![SS1](SS1.png) | ![SS2](SS2.png) | ![SS3](SS3.png) |
-| ![SS4](SS4.png) |  |  |
+| ![SS1](assets/SS1.png) | ![SS2](assets/SS2.png) | ![SS3](assets/SS3.png) |
+| ![SS4](assets/SS4.png) |  |  |
 
 *Add additional screenshots (`SS5.png`, `SS6.png`, …) following the same pattern.*
 
