@@ -14,4 +14,4 @@ A simple **PHP CRUD** admin interface built on **AdminLTE 3** (Bootstrap 4) 
 
 ---
 
-*— Your Name / NIM – FTI UNISKA*
+*Rudy 2310010148 – FTI UNISKA*
